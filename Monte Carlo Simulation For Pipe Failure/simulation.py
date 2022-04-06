@@ -1,42 +1,62 @@
 import numpy as np
 import pandas as pd
 import random
+import os
+import yaml
 from dataclasses import dataclass
 from statistics import NormalDist
 import matplotlib.pyplot as plt
+
+# folder to load config file
+CONFIG_PATH = "./"
+# Function to load yaml configuration file
+def load_config(config_name):
+    """summary
+
+    Args:
+        config_name (str): The config file in the YAML format which has the defined values of diameter, thickness and yield
+
+    Returns:
+        dict: The function returns a dictionary object
+    """    
+    with open(os.path.join(CONFIG_PATH, config_name)) as file:
+        config = yaml.safe_load(file)
+    return config
+
+config = load_config("config.yaml")
 
 
 @dataclass
 class SimulationInputs:
         
     # Diameter
-    diameter_mean: int = 120
-    diameter_cov: int = 5
+    diameter_mean: int = config['diameter_mean']
+    diameter_cov: int = config['diameter_mean']
     diameter_std: float = (diameter_mean * diameter_cov) /100
+    
 
     # Thickness
-    thickness_mean: int  = 4
-    thickness_cov: int = 5
+    thickness_mean: int  = config['diameter_mean']
+    thickness_cov: int = config['diameter_mean']
     thickness_std: float = (thickness_mean * thickness_cov) /100
 
     # Yield Strength
-    yield_mean: int = 200
-    yield_cov: int = 10
+    yield_mean: int = config['yield_mean']
+    yield_cov: int = config['yield_cov']
     yield_std: float = (yield_mean * yield_cov) /100
 
     # Internal Pressure
-    internal_pressure: int = 10
+    internal_pressure: int = config['internal_pressure']
     
     # Iterations
-    iter_start: int = 1000
-    iter_end: int = 10000
-    iter_step: int = 1000
+    iter_start: int = config['iter_start']
+    iter_end: int = config['iter_end']
+    iter_step: int = config['iter_step']
 
 print("---------------------------------------Data CLass Object created ---------------------------------------")
 simulation_data = SimulationInputs()
 
-        
-     
+             
 def initiate_simulation(iter_start = simulation_data.iter_start, iter_end = simulation_data.iter_end, iter_step = simulation_data.iter_step):
     """summary
 
@@ -77,9 +97,9 @@ def run_simulation(iterations):
         lst_diameter = simulate_values(simulation_data.diameter_mean, simulation_data.diameter_std,iterations, False)
 
         lst_thickness = simulate_values(simulation_data.thickness_mean, simulation_data.thickness_std,iterations, False)
-
+        
         lst_yield = simulate_values(simulation_data.yield_mean, simulation_data.yield_std, iterations, False)
-
+        
         df_final = pd.DataFrame(list(zip(lst_diameter, lst_thickness, lst_yield)), columns = ['Diameter', 'Thickness', 'Yield'])
 
         df_final['Hoop_Stress'] = simulation_data.internal_pressure * df_final['Diameter'] / (2 * df_final['Thickness'])
@@ -87,14 +107,9 @@ def run_simulation(iterations):
         df_final['Objective'] = df_final['Yield'] - df_final["Hoop_Stress"]
         
         min_stress = df_final['Hoop_Stress'].min()
-        # print(f'The minimum stress value: {min_stress}')
-        
+                
         max_stress = df_final['Hoop_Stress'].max()
-        # print(f'The maximum stress value: {max_stress}')
-        # plot_fd(df_final, min_stress, max_stress)
-
-        # print(styled_df((df_final)))
-            
+                    
         return  df_final[df_final['Objective'] < 0].shape[0] / iterations   
     
     except Exception as e:
@@ -117,6 +132,7 @@ def simulate_values(mu, sigma, iterations, print_output = True):
         for i in range(iterations):
             prob_value = round(random.uniform(.01, 0.99),3)
             sim_value = round(NormalDist(mu=mu, sigma= sigma).inv_cdf(prob_value),3)
+            
             if print_output:
                 print(f"The prob value is {prob_value} and the simulated value is {sim_value}")   
             result.append(sim_value)
@@ -177,4 +193,4 @@ def styled_df(df):
 
 
 
-  
+    

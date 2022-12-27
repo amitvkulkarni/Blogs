@@ -1,0 +1,15 @@
+site_name: Book Renting Service
+
+theme: 'material'
+
+plugins:
+  - search
+  - mkdocstrings
+
+
+nav:
+  - index.md
+  - BookRental.md
+  - Testing.md
+
+

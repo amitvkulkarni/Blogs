@@ -58,7 +58,7 @@ ER = []
 rf = 0
 
 
-# df_GSPC = pdr.get_data_yahoo("^GSPC", start=start_date, end=end_date)["Adj Close"]
+df_GSPC = pdr.get_data_yahoo("^GSPC", start=start_date, end=end_date)["Adj Close"]
 total_returns = (df_GSPC[-1] - df_GSPC[0]) / df_GSPC[0]
 rm = ((1 + total_returns) ** (1 / num_years)) - 1
 

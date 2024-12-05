@@ -1,4 +1,13 @@
 ######################################################################
+# SQL Made Simple: How NL2SQL with Langchain is Reshaping Data Analysis
+# Learn how NL2SQL with Langchain simplifies complex SQL queries, enabling # faster and more accessible data analysis through natural language commands
+
+# Blog: https://medium.com/@amitvkulkarni/sql-made-simple-how-nl2sql-with-langchain-is-reshaping-data-analysis-9df763bdee33
+######################################################################
+
+
+
+######################################################################
 # Imoprting the required libraries
 ######################################################################
 

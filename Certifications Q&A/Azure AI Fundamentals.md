@@ -72,24 +72,23 @@
   <p>Yes, most Azure AI services offer a free price tier that allows you to explore and evaluate capabilities at no cost.</p>
 </details>
 
-Grounding and Retrieval-Augmented Generation (RAG)
+## 📘 Grounding and Retrieval-Augmented Generation (RAG)
+
 <details> <summary><strong>Q1. What is the purpose of grounding in generative AI systems?</strong></summary> A. Grounding ensures that a model's outputs are aligned with factual, contextual, or reliable data sources. It helps improve trustworthiness by anchoring responses to real-world information. </details> <details> <summary><strong>Q2. Which technique connects a language model to an organization’s proprietary data to generate more accurate responses?</strong></summary> A. Retrieval-Augmented Generation (RAG) </details> <details> <summary><strong>Q3. What is the primary benefit of using Retrieval-Augmented Generation (RAG) in AI systems?</strong></summary> A. RAG enhances a model’s performance by using real-time or domain-specific information, leading to more accurate, relevant, and up-to-date responses. </details> <details> <summary><strong>Q4. In which scenarios is RAG particularly useful?</strong></summary> A. RAG is ideal for applications requiring access to dynamic or proprietary data, such as customer support and knowledge management systems. </details>
-Fine-Tuning and Security
+
+## 📘Fine-Tuning and Security
 <details> <summary><strong>Q5. What is fine-tuning in the context of generative AI?</strong></summary> A. Fine-tuning involves further training a pre-trained model on a task-specific or domain-specific dataset to improve its performance for specialized applications. </details> <details> <summary><strong>Q6. Why is fine-tuning useful for generative AI models?</strong></summary> A. It improves task-specific accuracy and reduces irrelevant or inaccurate responses by adapting the model to domain-specific needs. </details> <details> <summary><strong>Q7. What role do security and governance controls play in generative AI applications?</strong></summary> A. They manage access, authentication, and data usage to help prevent the generation or publication of incorrect or unauthorized information. </details>
-Evaluators and Quality Metrics
+
+## 📘 Evaluators and Quality Metrics
 <details> <summary><strong>Q8. What are the three primary categories of evaluators used to measure generative AI response quality?</strong></summary> A. 1. Performance and quality evaluators 2. Risk and safety evaluators 3. Custom evaluators </details> <details> <summary><strong>Q9. What do performance and quality evaluators assess in AI-generated content?</strong></summary> A. They assess accuracy, groundedness, and relevance of the generated output. </details> <details> <summary><strong>Q10. What is the purpose of risk and safety evaluators in generative AI systems?</strong></summary> A. They evaluate potential risks such as harmful, biased, or inappropriate content to ensure safer outputs. </details> <details> <summary><strong>Q11. What are custom evaluators used for in generative AI quality measurement?</strong></summary> A. Custom evaluators are designed for industry-specific needs and use domain-specific metrics to align AI outputs with business goals. </details> <details> <summary><strong>Q12. Which Azure tool provides an environment for workflows like evaluation and responsible AI planning?</strong></summary> A. Azure AI Foundry </details>
-Microsoft's Responsible Generative AI Process
+
+## 📘Microsoft's Responsible Generative AI Process
 <details> <summary><strong>Q1. What are the four stages in Microsoft’s responsible generative AI process?</strong></summary> A. 1. Identify potential harms 2. Measure the presence of harms in model outputs 3. Mitigate harms across solution layers and ensure transparent communication 4. Operate responsibly with deployment and operational readiness plans </details> <details> <summary><strong>Q2. What should inform the four stages of responsible AI planning?</strong></summary> A. Microsoft's Responsible AI principles </details> <details> <summary><strong>Q3. Why is grounding AI systems in responsible principles especially important?</strong></summary> A. Because AI systems are probabilistic, data-driven, and can influence high-stakes decisions, leading to potential harm if not carefully designed and monitored. </details>
-Responsible AI Principles
+
+## 📘Responsible AI Principles
 <details> <summary><strong>Q4. What does the principle of Fairness in responsible AI emphasize?</strong></summary> A. That AI systems should treat all people fairly, without bias based on gender, ethnicity, or other discriminatory factors. </details> <details> <summary><strong>Q5. What is a good practice to ensure fairness during AI system development?</strong></summary> A. • Use representative training data • Continuously evaluate model performance across subpopulations </details> <details> <summary><strong>Q6. What does Reliability and Safety mean in the context of AI?</strong></summary> A. AI systems must function as expected and safely under all conditions, particularly in high-risk domains like healthcare or autonomous driving. </details> <details> <summary><strong>Q7. How can developers ensure reliability and safety in AI systems?</strong></summary> A. Through rigorous testing, confidence thresholding, and robust deployment practices. </details> <details> <summary><strong>Q8. What does the Privacy and Security principle involve?</strong></summary> A. Protecting personal and sensitive data in training, deployment, and inference phases, and ensuring appropriate safeguards are in place. </details> <details> <summary><strong>Q9. How does Microsoft define Inclusiveness in AI systems?</strong></summary> A. AI should empower all users, including those from diverse backgrounds or with disabilities, by ensuring design and testing include broad user perspectives. </details> <details> <summary><strong>Q10. What does Transparency mean in responsible AI?</strong></summary> A. Users should understand how the system works, its purpose, limitations, and what influences its predictions—like features, training size, or confidence scores. </details> <details> <summary><strong>Q11. What is a key aspect of achieving transparency in AI systems?</strong></summary> A. Providing clear information about data usage, model limitations, and how predictions are made. </details> <details> <summary><strong>Q12. What is the core idea behind the Accountability principle?</strong></summary> A. Humans, not the system, are accountable for decisions made by AI. Developers and organizations must ensure AI systems meet ethical and legal standards. </details> <details> <summary><strong>Q13. Why must organizations build AI solutions within a governance framework?</strong></summary> A. To ensure AI applications comply with legal, ethical, and organizational responsibility standards. </details> <details> <summary><strong>Q14. Why is it dangerous for users to overly trust AI systems?</strong></summary> A. Because the human-like behavior of AI can lead to misplaced trust, even though the model might still make incorrect or biased predictions. </details>
 
-# 📘 Natural Language Processing (NLP) Essentials with Azure AI Language
-
-A concise reference guide to foundational NLP concepts and practical applications using Azure AI Language services.
-
----
-
-## 📘 Section 1: Basics of Text Analysis and NLP
+## 📘 Basics of Text Analysis and NLP
 
 <details>
   <summary><strong>Q1: What is the primary purpose of tokenization in text analysis?</strong></summary>
@@ -116,7 +115,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 2: Frequency Analysis
+## 📘Frequency Analysis
 
 <details>
   <summary><strong>Q5: How does frequency analysis help in identifying the subject of a document?</strong></summary>
@@ -130,7 +129,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 3: Text Classification and Sentiment Analysis
+## 📘 Text Classification and Sentiment Analysis
 
 <details>
   <summary><strong>Q7: What is text classification in NLP?</strong></summary>
@@ -150,7 +149,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 4: Embeddings and Semantic Models
+## 📘 Embeddings and Semantic Models
 
 <details>
   <summary><strong>Q10: What are embeddings in NLP?</strong></summary>
@@ -164,7 +163,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 5: Azure AI Language Features
+## 📘 Azure AI Language Features
 
 <details>
   <summary><strong>Q12: What is Azure AI Language?</strong></summary>
@@ -205,7 +204,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 6: Entity Recognition and Text Summarization
+## 📘 Entity Recognition and Text Summarization
 
 <details>
   <summary><strong>Q18: What is Named Entity Recognition (NER)?</strong></summary>
@@ -224,7 +223,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 7: Opinion Mining and Sentiment Scores
+## 📘 Opinion Mining and Sentiment Scores
 
 <details>
   <summary><strong>Q21: What is opinion mining?</strong></summary>
@@ -243,7 +242,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 8: Text Preprocessing Techniques
+## 📘 Text Preprocessing Techniques
 
 <details>
   <summary><strong>Q24: Why is text normalization important in NLP?</strong></summary>
@@ -258,7 +257,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 9: Word Similarity and Contextual Understanding
+## 📘 Word Similarity and Contextual Understanding
 
 <details>
   <summary><strong>Q26: How does word embedding help in measuring similarity?</strong></summary>
@@ -272,7 +271,7 @@ A concise reference guide to foundational NLP concepts and practical application
 
 ---
 
-## 📘 Section 10: Practical Considerations in Azure AI Language
+## 📘 Practical Considerations in Azure AI Language
 
 <details>
   <summary><strong>Q28: What format must text data be in to use Azure AI Language APIs?</strong></summary>
@@ -289,6 +288,7 @@ A concise reference guide to foundational NLP concepts and practical application
   <p>Verify that the text has enough meaningful characters and avoid special characters or extremely short phrases.</p>
 </details>
 
+## 📘 Fundamentals of question answering with the Language Service
 <details>
   <summary><strong>Q1. What is the purpose of Question Answering in Azure AI Language?</strong></summary>
   <p>It enables natural language AI workloads by allowing users to get accurate, conversational answers from a knowledge base, often used in bots on platforms like websites or social media.</p>
@@ -348,6 +348,8 @@ A concise reference guide to foundational NLP concepts and practical application
   <summary><strong>Q10. What must be done before testing a Question Answering project in Azure?</strong></summary>
   <p>The project must be saved, which triggers NLP processing to map varied user inputs to the right answers.</p>
 </details>
+
+## 📘 Fundamentals of conversational language understanding
 
 <details>
   <summary><strong>Q1. What is the purpose of Azure AI Language’s Conversational Language Understanding (CLU) feature?</strong></summary>
@@ -478,6 +480,7 @@ A concise reference guide to foundational NLP concepts and practical application
   <p>They reduce setup time by providing ready-to-use intents and entities for common business scenarios.</p>
 </details>
 
+## 📘 Azure AI speech
 <details>
   <summary><strong>Q1: What is the main function of speech recognition in Azure AI Speech?</strong></summary>
   <p>To convert spoken audio into text data that applications can process.</p>
@@ -563,6 +566,7 @@ A concise reference guide to foundational NLP concepts and practical application
   <p>It must capture audio input, stream it to the service, and receive the transcribed text in return.</p>
 </details>
 
+## 📘 Fundamentals of language translation
 <details>
   <summary><strong>Q1: What is the main limitation of literal translation in AI systems?</strong></summary>
   <p>Literal translation may not account for context, grammar, or cultural idioms, which can lead to inaccurate or awkward translations.</p>
@@ -638,6 +642,7 @@ A concise reference guide to foundational NLP concepts and practical application
   <p>It consolidates billing and access across multiple AI services and allows you to use a single endpoint and authentication key.</p>
 </details>
 
+## 📘 Computer Vision
 <details>
   <summary><strong>Q1: What is the main difference between image processing and computer vision?</strong></summary>
   <p>Image processing applies filters for effects and visual manipulation, while computer vision focuses on extracting meaning or actionable insights from images using machine learning models.</p>
@@ -698,6 +703,9 @@ A concise reference guide to foundational NLP concepts and practical application
   <p>They provide a general pre-trained model that can be adapted to specific tasks, reducing the effort required to build specialized models from scratch.</p>
 </details>
 <details>
+
+  ## 📘 Fundamentals of Facial Recognition
+  
   <summary><strong>Q1: What is face detection?</strong></summary>
   <p>Face detection involves identifying regions of an image that contain human faces, typically returning bounding box coordinates around each face.</p>
 </details>
@@ -807,6 +815,7 @@ A concise reference guide to foundational NLP concepts and practical application
   <p>Recognition identifies who the person is; detection only finds that a face is present.</p>
 </details>
 
+## 📘 Optical Character Recognition
 <details>
   <summary><strong>Q1: What is the purpose of Optical Character Recognition (OCR)?</strong></summary>
   <p>OCR enables AI systems to read and extract text from images such as scanned documents or photographs.</p>
@@ -906,6 +915,8 @@ A concise reference guide to foundational NLP concepts and practical application
   <summary><strong>Q20: Why is OCR useful in digitizing historical documents?</strong></summary>
   <p>It can convert printed or handwritten text into machine-readable formats for preservation and analysis.</p>
 </details>
+
+## 📘 Generative AI workloads on Azure
 
 <details>
   <summary><strong>Q1: What is the primary use of Azure OpenAI service?</strong></summary>
@@ -1007,6 +1018,7 @@ A concise reference guide to foundational NLP concepts and practical application
   <p>Through service-specific APIs and SDKs using endpoints and authorization keys.</p>
 </details>
 
+## 📘 AI Agents
 <details>
   <summary><strong>Q1: What is an AI agent in the context of Azure AI solutions?</strong></summary>
   <p>An AI agent is a smart software service that combines generative AI models with contextual data and automation capabilities to perform tasks based on user input and environmental cues.</p>

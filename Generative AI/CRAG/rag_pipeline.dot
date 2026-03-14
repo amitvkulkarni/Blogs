@@ -1,0 +1,108 @@
+digraph RAG_Pipeline {
+
+    // ── Graph settings ────────────────────────────────────────────────────────
+    graph [
+        label       = "Standard RAG Pipeline\n(Retrieval-Augmented Generation)"
+        labelloc    = t
+        fontname    = "Helvetica"
+        fontsize    = 18
+        rankdir     = TB
+        splines     = ortho
+        nodesep     = 0.6
+        ranksep     = 0.7
+        bgcolor     = "#F7F9FC"
+    ]
+
+    node [
+        fontname    = "Helvetica"
+        fontsize    = 12
+        style       = "filled,rounded"
+        shape       = box
+        margin      = "0.25,0.15"
+    ]
+
+    edge [
+        fontname    = "Helvetica"
+        fontsize    = 10
+        color       = "#555555"
+        arrowsize   = 0.8
+    ]
+
+    // ── Nodes: Indexing Phase ─────────────────────────────────────────────────
+    subgraph cluster_indexing {
+        label       = "Indexing Phase  (one-time setup)"
+        fontsize    = 13
+        fontcolor   = "#1A5276"
+        style       = "filled,rounded"
+        color       = "#AED6F1"
+        fillcolor   = "#EBF5FB"
+        margin      = 20
+
+        A [label="Load Documents\n./documents/*.txt"
+           fillcolor="#AED6F1" color="#1A5276" fontcolor="#1A3550"]
+
+        B [label="Split into Chunks\nRecursiveCharacterTextSplitter\nchunk_size=500  overlap=50"
+           fillcolor="#AED6F1" color="#1A5276" fontcolor="#1A3550"]
+
+        C [label="Embed Chunks\nAzure OpenAI Embeddings\n(text-embedding-ada-002)"
+           fillcolor="#AED6F1" color="#1A5276" fontcolor="#1A3550"]
+
+        D [label="FAISS Vector Store\n(in-memory index)"
+           shape=cylinder
+           fillcolor="#D6EAF8" color="#1A5276" fontcolor="#1A3550"]
+
+        A -> B [label="  raw docs"]
+        B -> C [label="  chunks"]
+        C -> D [label="  embeddings"]
+    }
+
+    // ── Nodes: Query Phase ────────────────────────────────────────────────────
+    subgraph cluster_query {
+        label       = "Query Phase  (per user request)"
+        fontsize    = 13
+        fontcolor   = "#1D6A27"
+        style       = "filled,rounded"
+        color       = "#A9DFBF"
+        fillcolor   = "#EAFAF1"
+        margin      = 20
+
+        E [label="User Query"
+           shape=oval
+           fillcolor="#A9DFBF" color="#1D6A27" fontcolor="#145A26"]
+
+        F [label="Embed Query\nAzure OpenAI Embeddings"
+           fillcolor="#A9DFBF" color="#1D6A27" fontcolor="#145A26"]
+
+        G [label="Vector Similarity Search\ntop-K=4 nearest chunks"
+           fillcolor="#A9DFBF" color="#1D6A27" fontcolor="#145A26"]
+
+        H [label="Build Prompt\nSystem prompt + Context chunks\n+ User question"
+           fillcolor="#A9DFBF" color="#1D6A27" fontcolor="#145A26"]
+
+        I [label="Azure OpenAI LLM\n(gpt-4o / RetrievalQA chain)\nSingle-pass generation"
+           fillcolor="#A3E4D7" color="#0E6655" fontcolor="#0B4619"]
+
+        J [label="Return Answer\n+ Source Documents"
+           shape=oval
+           fillcolor="#A9DFBF" color="#1D6A27" fontcolor="#145A26"]
+
+        E -> F [label="  raw text"]
+        F -> G [label="  query vector"]
+        G -> H [label="  retrieved chunks"]
+        E -> H [label="  original question" style=dashed]
+        H -> I [label="  full prompt"]
+        I -> J [label="  generated text"]
+    }
+
+    // ── Cross-phase edge ──────────────────────────────────────────────────────
+    D -> G [label="  similarity search"
+            style=dashed color="#1A5276" fontcolor="#1A5276"]
+
+    // ── WARNING callout ───────────────────────────────────────────────────────
+    W [label="⚠  No Verification Step\nNo document relevance check\nNo self-reflection\nNo confidence score"
+       shape=note
+       fillcolor="#FADBD8" color="#C0392B" fontcolor="#922B21"
+       fontsize=11]
+
+    I -> W [style=dashed color="#C0392B" arrowhead=none]
+}

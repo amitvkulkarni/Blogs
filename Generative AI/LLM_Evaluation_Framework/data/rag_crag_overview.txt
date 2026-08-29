@@ -1,0 +1,72 @@
+RAG & CRAG IMPLEMENTATION GUIDE
+AI Hallucination Prevention in Engineering Compliance Systems
+
+=== WHAT IS RAG? ===
+Retrieval-Augmented Generation (RAG) is a technique that improves Large Language Model (LLM) responses
+by supplying the model with relevant documents retrieved from a knowledge base before generating an answer.
+
+Standard RAG Pipeline:
+1. User submits a query
+2. Query is embedded (converted to a vector)
+3. Vector similarity search retrieves top-K relevant document chunks
+4. Retrieved chunks + query are passed to the LLM as context
+5. LLM generates an answer based on the provided context
+
+Strengths:
+  - Grounds LLM in factual, up-to-date documents
+  - Reduces (but does not eliminate) hallucinations
+  - Easy to implement with frameworks like LangChain
+
+Weaknesses:
+  - Relies on a single retrieval pass — may miss relevant evidence
+  - No mechanism to check if retrieved documents are actually relevant
+  - LLM may still generate incorrect claims not grounded in the retrieved docs
+  - No self-verification step; confident but wrong answers pass through
+
+=== WHAT IS CRAG (CORRECTIVE RAG)? ===
+Corrective Retrieval-Augmented Generation (CRAG) adds quality-control layers on top of standard RAG
+to actively detect and correct errors before returning an answer to the user.
+
+CRAG Pipeline:
+1. User submits a query
+2. Retrieve top-K candidate documents (same as RAG)
+3. GRADE each retrieved document: Relevant / Irrelevant / Ambiguous
+4. Filter — keep only documents graded as relevant
+5. If too few relevant documents are found, flag low confidence or expand search
+6. Generate a DRAFT answer using only relevant documents
+7. SELF-REFLECTION — LLM critiques its own draft answer
+8. Identify unsupported claims or contradictions in the draft
+9. Return a refined FINAL answer with confidence score and citations
+
+Key Additions Over RAG:
+  - Document relevance grading (reduces noise in context)
+  - Self-reflection / critique loop (catches hallucinations in the draft)
+  - Confidence scoring (helps users gauge answer reliability)
+  - Explicit citation tracking (improves auditability)
+
+=== WHY CRAG MATTERS FOR ENGINEERING ===
+In engineering and compliance contexts, incorrect AI-generated answers can lead to:
+  - Procurement of wrong materials
+  - Code violations and failed inspections  
+  - Safety hazards on construction sites
+  - Costly rework and project delays
+  - Legal and regulatory liability
+
+CRAG reduces these risks by ensuring answers are:
+  - Grounded in retrieved documents
+  - Self-verified before delivery
+  - Accompanied by explicit confidence scores and source citations
+
+=== RAG vs CRAG COMPARISON ===
+Feature                    | Standard RAG      | Corrective RAG (CRAG)
+---------------------------|-------------------|------------------------
+Document retrieval         | Yes               | Yes
+Document relevance check   | No                | Yes (LLM grader)
+Noise filtering            | None              | Filters irrelevant docs
+Answer generation          | Single pass       | Draft + reflection
+Self-verification          | No                | Yes (critique loop)
+Confidence scoring         | No                | Yes
+Citation tracking          | Basic (optional)  | Explicit
+Hallucination resistance   | Moderate          | High
+Latency overhead           | Low               | Medium
+Complexity                 | Simple            | Moderate

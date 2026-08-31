@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "question": "What is the minimum chiller COP requirement for Chicago buildings larger than 300 tons?",
+    "expected_answer": "The minimum chiller COP for Chicago (following ASHRAE 90.1-2022 with Chicago Amendments) is 6.1 for systems with capacity greater than 300 tons.",
+    "source_files": ["building_codes_hvac.txt"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 2,
+    "question": "Which city has the most stringent HVAC efficiency requirements?",
+    "expected_answer": "Seattle, WA has the most stringent requirements with heat pumps requiring HSPF >= 12 and SEER >= 18, reflecting its higher climate requirements.",
+    "source_files": ["building_codes_hvac.txt"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 3,
+    "question": "What is the maximum duct leakage percentage allowed in Seattle?",
+    "expected_answer": "Seattle allows a maximum of 3% duct leakage at the design airflow, which is the most restrictive among the three cities.",
+    "source_files": ["building_codes_hvac.txt"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 4,
+    "question": "Are energy recovery systems mandatory in Houston for all HVAC systems?",
+    "expected_answer": "No, energy recovery systems are recommended but not mandatory in Houston for office occupancies, unlike Chicago and Seattle where they are mandatory.",
+    "source_files": ["building_codes_hvac.txt"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 5,
+    "question": "What is Seattle's seismic design category and why does it matter for structural design?",
+    "expected_answer": "Seattle is in Seismic Zone D with SDC D (high risk), making it critical for full special seismic detailing and independent peer review before permit issuance.",
+    "source_files": ["seismic_codes.txt"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 6,
+    "question": "What minimum beam depth is required for Seattle moment frame structures with spans greater than 18 feet?",
+    "expected_answer": "W18 or larger beams are required for Seattle moment frame structures with spans exceeding 18 feet, reflecting the high seismic demands.",
+    "source_files": ["seismic_codes.txt"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 7,
+    "question": "Why is Houston's seismic design less critical than other cities?",
+    "expected_answer": "Houston is in Seismic Zone A with SDC A (lowest risk) where seismic loads are non-governing; wind and hurricane loads control the lateral design instead.",
+    "source_files": ["seismic_codes.txt"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 8,
+    "question": "What type of welding inspection is required for structural beams in all cities?",
+    "expected_answer": "AWS D1.1 welding inspection is required for all structural beams, with AISC quality certification Category STD minimum across all cities.",
+    "source_files": ["seismic_codes.txt"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 9,
+    "question": "What is the key difference between Standard RAG and Corrective RAG (CRAG)?",
+    "expected_answer": "CRAG adds quality-control layers including document relevance grading, self-reflection critique loops, confidence scoring, and explicit citation tracking to reduce hallucinations.",
+    "source_files": ["rag_crag_overview.txt"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 10,
+    "question": "Why is CRAG important for engineering compliance systems?",
+    "expected_answer": "CRAG matters for engineering because incorrect answers can lead to procurement errors, code violations, safety hazards, and costly rework. CRAG reduces risks by ensuring answers are grounded, self-verified, and accompanied by confidence scores and citations.",
+    "source_files": ["rag_crag_overview.txt"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 11,
+    "question": "Which certification is required for testing and balancing HVAC systems across Chicago, Houston, and Seattle?",
+    "expected_answer": "TAB (Testing, Adjusting, Balancing) certification by NEBB or AABC certified firms is required for all three cities.",
+    "source_files": ["building_codes_hvac.txt"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 12,
+    "question": "What is the thermal efficiency requirement for gas-fired boilers in Seattle exceeding 300,000 Btu/h?",
+    "expected_answer": "Gas-fired boilers larger than 300,000 Btu/h in Seattle must have a thermal efficiency of at least 92% per the WSEC-C 2021 standard.",
+    "source_files": ["building_codes_hvac.txt"],
+    "difficulty": "easy"
+  }
+]

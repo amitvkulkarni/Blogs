@@ -1,0 +1,98 @@
+# RAG System Configuration
+# Edit these values to tune the RAG pipeline without changing code
+
+# Document Chunking Settings
+chunking:
+  chunk_size: 1000 # Characters per chunk for engineering documents
+  chunk_overlap: 200 # Overlap between chunks to preserve context
+  separator: "\n\n" # Primary separator for splitting documents
+
+# Vector Store Settings
+vector_store:
+  path: "./vector_store" # Local directory for persistent Chroma storage
+  collection_name: "engineering_docs" # Collection name in the vector store
+  search_type: "similarity" # Type of search: similarity or mmr (maximal marginal relevance)
+  k_retrieval: 4 # Number of top-k documents to retrieve for RAG
+
+# Azure Foundry Model Configuration
+# Models are identified by deployment name and API settings from .env
+models:
+  - name: "gpt5-mini"
+    deployment_name: "gpt-5-mini" # Deployment name from Azure OpenAI
+    model_id: "gpt-5-mini"
+    temperature: 0.1
+    max_tokens: 1500
+
+  - name: "gpt5-4"
+    deployment_name: "gpt-5.4" # Deployment name from Azure OpenAI
+    model_id: "gpt-5.4"
+    temperature: 0.1
+    max_tokens: 1500
+
+  - name: "gpt5-5"
+    deployment_name: "gpt-5.5" # Deployment name from Azure OpenAI
+    model_id: "gpt-5.5"
+    temperature: 0.1
+    max_tokens: 1500
+
+  - name: "gpt-5.6-terra"
+    deployment_name: "gpt-5.6-terra" # Deployment name from Azure OpenAI
+    model_id: "gpt-5.6-terra"
+    temperature: 0.1
+    max_tokens: 1500
+
+  - name: "gpt-5.6-sol"
+    deployment_name: "gpt-5.6-sol" # Deployment name from Azure OpenAI
+    model_id: "gpt-5.6-sol"
+    temperature: 0.1
+    max_tokens: 1500
+
+# Embedding Model Configuration
+embedding:
+  deployment_name: "text-embedding-ada-002" # Azure OpenAI embedding deployment
+  model_id: "text-embedding-ada-002"
+  embedding_dimension: 1536 # Ada-002 produces 1536-dimensional embeddings
+
+# RAG Prompt Configuration
+prompts:
+  system_message: |
+    You are an expert engineering compliance assistant. Answer questions based on the 
+    provided building codes, seismic standards, HVAC compliance, and vendor certifications.
+    Always cite the specific documents and sections you reference in your answer.
+
+  user_template: |
+    Based on the following context from engineering standards and compliance documents:
+
+    {context}
+
+    Answer this question: {question}
+
+    Provide a precise, grounded answer with specific code references or requirements cited.
+
+# Evaluation Settings
+evaluation:
+  golden_dataset_path: "./golden_dataset/qa_pairs.json" # Path to golden QA dataset
+  sample_limit: null # Limit evaluations to N questions (null = all)
+  evaluator_model: "gpt-5.6-sol" # Model to use for evaluation (for intelligent scoring)
+
+  # DeepEval metrics to compute
+  metrics:
+    - faithfulness # Is the answer faithful to the retrieved context?
+    - answer_relevancy # Is the answer relevant to the question?
+    - correctness # Does the answer match the expected answer?
+
+  # Evaluation thresholds (0.0 to 1.0)
+  thresholds:
+    faithfulness: 0.3
+    answer_relevancy: 0.3
+    correctness: 0.3
+
+# Indexing Settings
+indexing:
+  rebuild_index: false # Set to true to rebuild the entire index from scratch
+  data_path: "./data" # Directory containing source documents to index
+
+# Logging
+logging:
+  level: "INFO" # DEBUG, INFO, WARNING, ERROR
+  console_output: true # Print logs to console

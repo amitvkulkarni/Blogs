@@ -1,0 +1,15 @@
+python-dotenv
+openai
+pandas
+requests
+pydantic
+tqdm
+numpy
+langchain
+langchain-core
+langchain-openai
+langchain-community
+langchain-chroma
+langchain-text-splitters
+chromadb
+pyyaml
